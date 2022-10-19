@@ -1,0 +1,61 @@
+[ {
+  "id" : 1,
+  "name" : "Jono Java meetas",
+  "responsiblePerson" : {
+    "id" : 1,
+    "prname" : "Jonas Jonauskas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 1 ]
+  },
+  "description" : "Java pradmenu aptarimas.",
+  "category" : "CodeMonkey",
+  "type" : "Live",
+  "startDate" : [2022,10,2,10,0],
+  "endDate" : [2022,10,2,11,0],
+  "atendees" : [ 4, 16, 17 ]
+}, {
+  "id" : 2,
+  "name" : "Vyto JavaScript meetas",
+  "responsiblePerson" : {
+    "id" : 2,
+    "prname" : "Vytas Vytautas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 2 ]
+  },
+  "description" : "JavaScript pradmenu aptarimas.",
+  "category" : "Short",
+  "type" : "Live",
+  "startDate" : [2022,10,4,14,0],
+  "endDate" : [2022,10,4,15,0],
+  "atendees" : [ 4, 16, 18, 19, 20 ]
+}, {
+  "id" : 3,
+  "name" : "Dziugo C++ meetas",
+  "responsiblePerson" : {
+    "id" : 3,
+    "prname" : "Dziugas Dziugaitis",
+    "status" : "responsiblePerson",
+    "meetings" : [ 3 ]
+  },
+  "description" : "C++ pradmenu aptarimas.",
+  "category" : "Hub",
+  "type" : "Live",
+  "startDate" : [2022,10,7,10,0],
+  "endDate" : [2022,10,7,11,0],
+  "atendees" : [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}, {
+  "id" : 4,
+  "name" : "Codingas",
+  "responsiblePerson" : {
+    "id" : 3,
+    "prname" : "Dziugas Dziugaitis",
+    "status" : "responsiblePerson",
+    "meetings" : [ 3 ]
+  },
+  "description" : "C++ pradmenu aptarimas.",
+  "category" : "TeamBuilding",
+  "type" : "Live",
+  "startDate" : [2022,10,9,10,0],
+  "endDate" : [2022,10,9,11,0],
+  "atendees" : [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+} ]
