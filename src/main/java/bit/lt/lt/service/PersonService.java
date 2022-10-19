@@ -1,32 +1,33 @@
 package bit.lt.lt.service;
 
-import bit.lt.lt.data.Meeting;
+
 import bit.lt.lt.data.Person;
-import bit.lt.lt.db.Db;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import bit.lt.lt.db.PersonDb;
 
-import java.io.IOException;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
+import java.util.List;
 
-@Service
-@AllArgsConstructor
+//@Service
+//@AllArgsConstructor
 public class PersonService {
 
-    private final Db db;
+    private final PersonDb personDb;
 
-    public ArrayList<Person> getAllPeople() {
-        return db.readJsonFilePeople();
+    public PersonService(PersonDb personDb) {
+        this.personDb = personDb;
     }
 
+    public List<Person> getAllPeople() {
+        return personDb.readJsonFilePeople();
+    }
     public Person addNewPerson(Person person) {
-        ArrayList<Person> list = getAllPeople();
+        List<Person> list = getAllPeople();
         list.add(person);
-        db.writeToJsonFilePeople(list);
+        personDb.writeToJsonFilePeople(list);
         return person;
     }
-
-    public Person getOnePerson(ArrayList<Person> list, Integer id) {
+    public Person getOnePerson(List<Person> list,Integer id) {
         if (id == null) {
             throw new NullPointerException("You have to get id for person");
         }
@@ -38,29 +39,37 @@ public class PersonService {
         }
         throw new IllegalArgumentException("Person not found");
     }
-
-    public ArrayList<Person> getPersonByName(ArrayList<Person> list, String name) {
-        ArrayList<Person> sortas = new ArrayList<>();
+    public Person getPersonByName(List<Person> list, String name) {
+        Person sortas = new Person();
         for (Person person : list) {
             if (person.getPrname().toLowerCase().contains(name.toLowerCase())) {
-                sortas.add(person);
+                sortas=person;
             }
         }
         return sortas;
     }
-
-    public ArrayList<Person> getPersonById(ArrayList<Person> list, Integer id) {
-        ArrayList<Person> sortas = new ArrayList<>();
+    public Person getPersonById(List<Person> list, Integer id) {
+        Person sortas = new Person();
         for (Person person : list) {
-            if (person.getId() == (id)) {
-                sortas.add(person);
+            if (person.getId()==(id)) {
+                sortas=person;
             }
         }
         return sortas;
     }
-
-    public ArrayList<Person> getPersonByStatus(ArrayList<Person> list, String status) {
-        ArrayList<Person> sortas = new ArrayList<>();
+    public List<Person> getPersonsByIds(List<Person> list, List<Integer> Ids) {
+        List<Person> sortas = new ArrayList<>();
+        for (Person person : list) {
+            Integer perId = person.getId();
+            for (Integer id : Ids)
+                if ((id).equals(perId)) {
+                    sortas.add(person);
+                }
+        }
+        return sortas;
+    }
+    public List<Person> getPersonByStatus(List<Person> list, String status) {
+        List<Person> sortas = new ArrayList<>();
         for (Person person : list) {
             if (person.getStatus().toLowerCase().contains(status.toLowerCase())) {
                 sortas.add(person);
@@ -68,20 +77,26 @@ public class PersonService {
         }
         return sortas;
     }
-
-    public Person deletePerson(Integer id) throws IOException {
-        ArrayList<Person> list = getAllPeople();
-        if (id == null) {
-            throw new NullPointerException("You have to get id for meeting");
-        }
+    public List<Person> getResponsiblePersonList(List<Person> list) {
+        List<Person> sortas = new ArrayList<>();
         for (Person person : list) {
-            if (id.equals(person.getId())) {
-                list.remove(person);
-                db.writeToJsonFilePeople(list);
-                return person;
+            if (person.getStatus().toLowerCase().equals("responsiblePerson".toLowerCase())) {
+                sortas.add(person);
             }
         }
-        throw new IllegalArgumentException("Meeting not found");
+        return sortas;
     }
-
+    public List<Person> updatePerson(Person setPerson) {
+        List<Person> persons = getAllPeople();
+        for (Person person : persons) {
+            if (setPerson.getId().equals(person.getId())) {
+                person.setPrname(setPerson.getPrname());
+                person.setStatus(setPerson.getStatus());
+                person.setMeetings(setPerson.getMeetings());
+                persons.set(person.getId(),person);
+                personDb.writeToJsonFilePeople(persons);
+            }
+        }
+        return persons;
+    }
 }

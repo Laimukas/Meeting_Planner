@@ -60,17 +60,47 @@
   "atendees" : [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 }, {
   "id" : 5,
-  "name" : "Vyto JavaScript mokslai",
+  "name" : "Bandom",
   "responsiblePerson" : {
     "id" : 2,
     "prname" : "Vytas Vytautas",
     "status" : "responsiblePerson",
     "meetings" : [ 2 ]
   },
-  "description" : "JavaScript pazangos aptarimas.",
+  "description" : "Bandomasis meetas",
   "category" : "CodeMonkey",
   "type" : "Live",
-  "startDate" : "2022-11-04 14:00:00",
-  "endDate" : "2022-11-04 15:00:00",
-  "atendees" : [ 4, 16, 18, 19, 20 ]
-}]
+  "startDate" : "2022-11-11 10:00:00",
+  "endDate" : "2022-11-11 10:30:00",
+  "atendees" : [ ]
+}, {
+  "id" : 6,
+  "name" : "Tikrinam",
+  "responsiblePerson" : {
+    "id" : 2,
+    "prname" : "Vytas Vytautas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 2 ]
+  },
+  "description" : "Tiesiog",
+  "category" : "Hub",
+  "type" : "InPerson",
+  "startDate" : "2022-11-12 11:00:00",
+  "endDate" : "2022-11-12 11:30:00",
+  "atendees" : [ ]
+}, {
+  "id" : 7,
+  "name" : "Whatever",
+  "responsiblePerson" : {
+    "id" : 3,
+    "prname" : "Dziugas Dziugaitis",
+    "status" : "responsiblePerson",
+    "meetings" : [ 3 ]
+  },
+  "description" : "Whatever try",
+  "category" : "TeamBuilding",
+  "type" : "InPerson",
+  "startDate" : "2022-11-15 10:00:00",
+  "endDate" : "2022-11-15 11:00:00",
+  "atendees" : [ 5, 8, 9, 12 ]
+} ]

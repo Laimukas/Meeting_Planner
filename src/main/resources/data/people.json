@@ -105,7 +105,12 @@
   "meetings" : [ 1, 2, 3 ]
 }, {
   "id" : 22,
-  "prname" : "11Adas Adomaitis",
+  "prname" : "Domas Domauskas",
   "status" : "participant",
-  "meetings" : [ 3 ]
+  "meetings" : [ ]
+}, {
+  "id" : 23,
+  "prname" : "Naujokas",
+  "status" : "participant",
+  "meetings" : [ 2 ]
 } ]
