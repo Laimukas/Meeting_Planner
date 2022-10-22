@@ -219,7 +219,7 @@ public class MeetingService {
     public List<Meeting> updateMeeting(Meeting setMeeting) {
         List<Meeting> meetings = getAllMeetings();
         for (Meeting meeting : meetings) {
-            if (setMeeting.getId().equals(meeting.getId())) {
+            if (meeting.getId().equals(setMeeting.getId())) {
                 meeting.setName(setMeeting.getName());
                 meeting.setResponsiblePerson(setMeeting.getResponsiblePerson());
                 meeting.setCategory(setMeeting.getCategory());
