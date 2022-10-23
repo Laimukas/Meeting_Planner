@@ -14,12 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.SQLOutput;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class MeetingController {
 
+    static DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private final MeetingDb meetingDb = new MeetingDb();
     private final PersonDb personDb = new PersonDb();
 
@@ -180,4 +189,40 @@ public class MeetingController {
         mav.addObject("meetings", list);
         return mav;
     }
+
+    @GetMapping("byDate")
+    public String pagalLaika() {
+        return "byDate";
+    }
+
+    // reik pirmiau sugalvot kaip i Request ideti jau perversta i String teksta vietoj LocalDateTime nes kitaip jo isgaut
+    // neina :( ir prisegt kaip parametro nesigauna,na galvosukis...
+    @PostMapping("laikas")
+    public ModelAndView laikas(
+            @RequestParam("dataNuo") LocalDateTime dataNuo,
+            @RequestParam("dataIki") LocalDateTime dataIki
+    ) throws ParseException {
+        ModelAndView mav = new ModelAndView("meetings");
+        List<Meeting> list = meetingService.getMeetingsByDate(meetingService.getAllMeetings(), dataNuo, dataIki);
+        mav.addObject("meetings", list);
+        return mav;
+    }
+    // cia tiesiog bandau patikrint ar gaunasi LocalDateTime keisti i String
+    @GetMapping("dateTime")
+    public String printinamLaika() {
+        return "dateTime";
+    }
+    @PostMapping("printLaikas")
+    public ModelAndView laikasSpausdinti(
+//            @RequestParam("laikas") Date dataNuo
+//            @RequestParam("laikas") LocalDateTime dataNuo
+    ) throws ParseException {
+        System.out.println("Tikrinu ar gaunasi keist LocalDateTime i String");
+//        String formatedDateTime = sdf.format(dataNuo);
+//        String formatedDateTime = dataNuo.format(formatter);
+//        System.out.println("Formatted LocalDateTime : " +formatedDateTime);
+        ModelAndView mav = new ModelAndView("index");
+        return mav;
+    }
+
 }

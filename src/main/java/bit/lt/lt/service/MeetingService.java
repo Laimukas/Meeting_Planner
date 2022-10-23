@@ -6,13 +6,19 @@ import bit.lt.lt.db.MeetingDb;
 import bit.lt.lt.db.PersonDb;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 //@Service
 //@AllArgsConstructor
 
 public class MeetingService {
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private final PersonDb personDb = new PersonDb();
 
@@ -111,6 +117,22 @@ public class MeetingService {
 //        return sortas;
 //    }
 
+    public List<Meeting> getMeetingsByDate(List<Meeting> list, LocalDateTime dateFrom, LocalDateTime dateTo) throws ParseException {
+        List<Meeting> sortas = new ArrayList<>();
+        Date from = sdf.parse(String.valueOf(dateFrom));
+        Date to = sdf.parse(String.valueOf(dateTo));
+        System.out.println(String.valueOf(dateFrom)+";to:"+String.valueOf(dateTo));
+        for (Meeting meetas : list) {
+            System.out.println("Meeting date from:"+meetas.getStartDate()+";date to:"+meetas.getEndDate());
+            Date timeFrom = sdf.parse(meetas.getStartDate());
+            Date timeTo = sdf.parse(meetas.getEndDate());
+            if (timeFrom.after(from) && timeTo.before(to)) {
+                sortas.add(meetas);
+            }
+        }
+        return sortas;
+    }
+
     public List<Meeting> getMeetingsByNumberOfAttendeesFrom(List<Meeting> list, Integer nr) {
         List<Meeting> sortas = new ArrayList<>();
         for (Meeting meetas : list) {
@@ -137,7 +159,7 @@ public class MeetingService {
         }
         for (Meeting meeting : list) {
             if (id.equals(meeting.getId())) {
-                System.out.println("Meeting we are looking for: " + meeting);
+                System.out.println("Meeting we are looking for is: " + meeting.getName());
                 return meeting;
             }
         }
@@ -162,7 +184,7 @@ public class MeetingService {
         return meetings;
     }
 
-    public List<Meeting> removeAttendee(Integer meetingId,Integer atendeeId) {
+    public List<Meeting> removeAttendee(Integer meetingId, Integer atendeeId) {
         List<Meeting> meetings = getAllMeetings();
         List<Integer> attendees = new ArrayList<>();
         if (meetingId == null && atendeeId == null) {
@@ -171,8 +193,8 @@ public class MeetingService {
         for (Meeting meeting : meetings) {
             if (meetingId.equals(meeting.getId())) {
                 attendees = meeting.getAtendees();
-                for (int i = 0;i<attendees.size();i++){
-                    if (attendees.get(i).equals(atendeeId)){
+                for (int i = 0; i < attendees.size(); i++) {
+                    if (attendees.get(i).equals(atendeeId)) {
                         attendees.remove(i);
                     }
                 }
@@ -195,7 +217,8 @@ public class MeetingService {
                 attendeesId = meeting.getAtendees();
                 break;
             }
-        }return attendeesId;
+        }
+        return attendeesId;
     }
 
     public List<Meeting> deleteMeeting(Integer id) throws IOException {
@@ -210,7 +233,7 @@ public class MeetingService {
                 break;
             } else {
                 throw new IOException(
-                        "Cannot delete meeting because you are not");
+                        "Cannot delete meeting for such a mistake we got.");
             }
         }
         return meetings;

@@ -33,7 +33,7 @@
      </td>
 
      <td>
-        <form method="GET" action="<%=application.getContextPath()%>/">
+        <form method="GET" action="<%=application.getContextPath()%>/meetings">
         <input type="submit" value="Go Back" >
         </form>
      </td></tr></table>

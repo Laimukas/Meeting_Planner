@@ -17,7 +17,7 @@
      <table>
      <tr>
      <td>
-        <form method="GET" action="meeting/new">
+        <form method="GET" action="<%=application.getContextPath()%>/meeting/new">
         <input type="submit" value="ADD Meeting" >
         </form>
      </td>

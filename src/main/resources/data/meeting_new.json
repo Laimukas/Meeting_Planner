@@ -27,7 +27,7 @@
   "type" : "Live",
   "startDate" : "2022-10-04 14:00:00",
   "endDate" : "2022-10-04 15:00:00",
-  "atendees" : [ 4, 16, 18, 19, 20 ]
+  "atendees" : [ 4, 16, 18, 19, 20, 7 ]
 }, {
   "id" : 3,
   "name" : "Dziugo C++ meetas",
@@ -102,5 +102,65 @@
   "type" : "InPerson",
   "startDate" : "2022-11-15 10:00:00",
   "endDate" : "2022-11-15 11:00:00",
+  "atendees" : [ 5, 8, 9, 12 ]
+}, {
+  "id" : 8,
+  "name" : "Java Coding school by Dziugas",
+  "responsiblePerson" : {
+    "id" : 3,
+    "prname" : "Dziugas Dziugaitis",
+    "status" : "responsiblePerson",
+    "meetings" : [ 3 ]
+  },
+  "description" : "Java coding school",
+  "category" : "CodeMonkey",
+  "type" : "Live",
+  "startDate" : "2022-11-22 10:00:00",
+  "endDate" : "2022-11-22 12:00:00",
+  "atendees" : [ 23 ]
+}, {
+  "id" : 9,
+  "name" : "C# from scrach",
+  "responsiblePerson" : {
+    "id" : 1,
+    "prname" : "Jonas Jonauskas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 1 ]
+  },
+  "description" : "C# by Jonas",
+  "category" : "CodeMonkey",
+  "type" : "Live",
+  "startDate" : "2022-11-22 10:00:00",
+  "endDate" : "2022-11-22 12:00:00",
+  "atendees" : [ ]
+}, {
+  "id" : 10,
+  "name" : "JavaScript from zero to hero",
+  "responsiblePerson" : {
+    "id" : 2,
+    "prname" : "Vytas Vytautas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 2 ]
+  },
+  "description" : "JavaScript by Vytas",
+  "category" : "CodeMonkey",
+  "type" : "Live",
+  "startDate" : "2022-11-23 10:00:00",
+  "endDate" : "2022-11-23 12:00:00",
+  "atendees" : [ ]
+}, {
+  "id" : 11,
+  "name" : "Teem Building by Jonas",
+  "responsiblePerson" : {
+    "id" : 1,
+    "prname" : "Jonas Jonauskas",
+    "status" : "responsiblePerson",
+    "meetings" : [ 1 ]
+  },
+  "description" : "Jonas Teem",
+  "category" : "TeamBuilding",
+  "type" : "InPerson",
+  "startDate" : "2022-11-29 9:00:00",
+  "endDate" : "2022-11-29 14:00:00",
   "atendees" : [ ]
 } ]

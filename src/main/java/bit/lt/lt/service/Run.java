@@ -15,5 +15,8 @@ public class Run {
 //        ms.addAttendee(atendee,5);
         //tikrinu ar istrina meeta - veikia
 //        ms.deleteMeeting(6);
+
+        String time = "2022-10-02 10:00:00";
+
     }
 }
