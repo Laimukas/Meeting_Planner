@@ -1,5 +1,7 @@
 package bit.lt.lt.service;
 
+import bit.lt.lt.db.PersonDb;
+
 import java.io.IOException;
 
 public class Run {
@@ -16,7 +18,13 @@ public class Run {
         //tikrinu ar istrina meeta - veikia
 //        ms.deleteMeeting(6);
 
-        String time = "2022-10-02 10:00:00";
-
+        //--------- Bandysim pridet/atimt Meeta Asmeniui -----------
+        PersonDb personDb = new PersonDb();
+        PersonService ps = new PersonService(personDb);
+//        int meetas = 5;
+//        int asmuo = 8;
+//        ps.addMeetingToAtendee(asmuo,meetas); //pataisius viena eilute - veikia :)
+//        ps.getPersonById(ps.getAllPeople(),asmuo);
+//        ps.removeMeetingFromAtendee(asmuo, meetas); // trina meeta is dalyvio saraso - veikia :)
     }
 }

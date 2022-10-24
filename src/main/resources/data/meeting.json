@@ -72,7 +72,7 @@
   "type" : "Live",
   "startDate" : "2022-11-11 10:00:00",
   "endDate" : "2022-11-11 10:30:00",
-  "atendees" : [ ]
+  "atendees" : [ 6 ]
 }, {
   "id" : 6,
   "name" : "Tikrinam",
@@ -87,7 +87,7 @@
   "type" : "InPerson",
   "startDate" : "2022-11-12 11:00:00",
   "endDate" : "2022-11-12 11:30:00",
-  "atendees" : [ ]
+  "atendees" : [ 7 ]
 }, {
   "id" : 7,
   "name" : "Whatever",
@@ -132,7 +132,7 @@
   "type" : "Live",
   "startDate" : "2022-11-22 10:00:00",
   "endDate" : "2022-11-22 12:00:00",
-  "atendees" : [ ]
+  "atendees" : [ 20 ]
 }, {
   "id" : 10,
   "name" : "JavaScript from zero to hero",
@@ -147,7 +147,7 @@
   "type" : "Live",
   "startDate" : "2022-11-23 10:00:00",
   "endDate" : "2022-11-23 12:00:00",
-  "atendees" : [ ]
+  "atendees" : [ 18 ]
 }, {
   "id" : 11,
   "name" : "Teem Building by Jonas",
@@ -162,5 +162,20 @@
   "type" : "InPerson",
   "startDate" : "2022-11-29 9:00:00",
   "endDate" : "2022-11-29 14:00:00",
+  "atendees" : [ 23, 22 ]
+}, {
+  "id" : 23,
+  "name" : "Helloweeno Party",
+  "responsiblePerson" : {
+    "id" : 3,
+    "prname" : "Dziugas Dziugaitis",
+    "status" : "responsiblePerson",
+    "meetings" : [ 3, 4, 7, 8, 23 ]
+  },
+  "description" : "Party",
+  "category" : "TeamBuilding",
+  "type" : "InPerson",
+  "startDate" : "2022-10-29 20:00:00",
+  "endDate" : "2022-10-30 7:00:00",
   "atendees" : [ ]
 } ]

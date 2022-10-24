@@ -27,7 +27,7 @@
             <tr><th>End Date:</th> <td> <input type="text" name="endDate" value="${meeting.endDate}"></td> </tr>
             <tr><th>Atendees Id:</th> <td> <input type="text" name="atendees" value="${meeting.atendees}"></td> </tr>
             <tr><td><input type="submit" value="Save"></td>
-            <td><a href="../">Cancel</a></td> </tr>
+            <td><a href="../meetings">Cancel</a></td> </tr>
         </form>
         </div>
 

@@ -112,6 +112,7 @@ public class MeetingController {
             Person person = personService.getPersonByName(personService.getAllPeople(), respPerName);
             Meeting meeting = new Meeting(name, person, description, category, type, startDate, endDate, atendees);
             meetingService.addNewMeeting(meeting);
+            personService.addMeetingToAtendee(person.getId(), meeting.getId()); // klausimas ar bus priskirtas sioje vetoje meeto id, nes anksciau jo nenurodom, GAUNASI - isiraso asmeniui,bet meeto respPers meetu liste dar senesnis sarasas :)
             list = meetingService.getAllMeetings();
             mav = new ModelAndView("meetings");
             mav.addObject("meetings", list);
@@ -128,6 +129,19 @@ public class MeetingController {
 
     @GetMapping("meeting/{id}/delete")
     public ModelAndView delete(@PathVariable("id") Integer id) throws IOException {
+//        //pirmiau istrinam is resp persono meeto id
+//        Meeting meetas = meetingService.getOneMeeting(meetingService.getAllMeetings(),id);
+//        Integer respPerId = meetas.getResponsiblePerson().getId();
+//        personService.removeMeetingFromAtendee(respPerId,id);
+//        //tada turim visu dalyviu meetu sarasus koreguot,istrinant sio meeto id
+//        List<Integer>atendees=meetas.getAtendees();
+//        if (atendees == null){
+//            System.out.println("There are no atendees in this meeting!!!..");
+//        }
+//        for (int i=0;i< atendees.size();i++){
+//            personService.removeMeetingFromAtendee(atendees.get(i), id);
+//        }
+//        //galiausiai trinam pati susitikima
         meetingService.deleteMeeting(id);
         List<Meeting> list = meetingService.getAllMeetings();
         ModelAndView mav = new ModelAndView("meetings");
@@ -168,6 +182,7 @@ public class MeetingController {
     @GetMapping("meeting/{id}/addAtendee/")
     public String addAtendee(@PathVariable("id") Integer id, @RequestParam("atendId") Integer atendee_id) throws IOException {
         Person person = personService.getPersonById(personService.getAllPeople(), atendee_id);
+        personService.addMeetingToAtendee(atendee_id,id);
         meetingService.addAttendee(person, id);
         return "redirect:/meeting/{id}/atendees";
     }

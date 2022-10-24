@@ -12,7 +12,7 @@ import java.util.List;
 public class PersonDb {
 
     private static final String PERSON_FILE_PATH =
-            "D:\\Dokumentai\\Coding\\Pamokos\\JavaMokslai\\meeting_spring\\src\\main\\resources\\data\\people.json";
+            "D:\\Dokumentai\\Coding\\Pamokos\\31sav\\meeting_planner\\src\\main\\resources\\data\\people.json";
 
     private final ObjectMapper mapper = createObjectMapper();
 
