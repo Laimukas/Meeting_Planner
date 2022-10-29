@@ -206,6 +206,29 @@ public class MeetingService {
         return meetings;
     }
 
+    public List<Meeting> removeAttendeeFromAllMeetings(Integer atendeeId) {
+        List<Meeting> meetings = getAllMeetings();
+        List<Integer> attendees = new ArrayList<>();
+        if (atendeeId == null) {
+            throw new NullPointerException("You have to get id for atendee");
+        }
+        System.out.println("attendee id we will remove is: "+atendeeId);
+        for (Meeting meeting : meetings) {
+                attendees = meeting.getAtendees();
+            System.out.println("meetingid: "+meeting.getId()+"; attendees: "+meeting.getAtendees());
+                for (int i = 0; i < attendees.size(); i++) {
+                    if (attendees.get(i).equals(atendeeId)) {
+                        attendees.remove(i);
+                        System.out.println("meetingId: "+meeting.getId()+";after removal: "+attendees);
+                        System.out.println("-----------------");
+                    }
+                }
+                meeting.setAtendees(attendees);
+                meetingDb.writeToJsonFile(meetings);
+            }
+        return meetings;
+    }
+
     public List<Integer> getAttendeesIdFromMeeting(Integer meetingId) {
         List<Meeting> meetings = getAllMeetings();
         List<Integer> attendeesId = new ArrayList<>();
@@ -231,9 +254,6 @@ public class MeetingService {
                 meetings.remove(meeting);
                 meetingDb.writeToJsonFile(meetings);
                 break;
-            } else {
-                throw new IOException(
-                        "Cannot delete meeting for such a mistake we got.");
             }
         }
         return meetings;

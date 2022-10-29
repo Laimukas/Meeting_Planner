@@ -2,7 +2,7 @@
   "id" : 1,
   "prname" : "Jonas Jonauskas",
   "status" : "responsiblePerson",
-  "meetings" : [ 1, 9, 11 ]
+  "meetings" : [ 1, 9, 11, 2 ]
 }, {
   "id" : 2,
   "prname" : "Vytas Vytautas",
@@ -12,7 +12,7 @@
   "id" : 3,
   "prname" : "Dziugas Dziugaitis",
   "status" : "responsiblePerson",
-  "meetings" : [ 3, 4, 7, 8, 23 ]
+  "meetings" : [ 3, 4, 7, 8, 23, 36 ]
 }, {
   "id" : 4,
   "prname" : "Antanas Antanaitis",
@@ -107,10 +107,5 @@
   "id" : 22,
   "prname" : "Domas Domauskas",
   "status" : "participant",
-  "meetings" : [23, 11 ]
-}, {
-  "id" : 23,
-  "prname" : "Naujokas",
-  "status" : "participant",
-  "meetings" : [ 8, 11 ]
+  "meetings" : [ 23, 11 ]
 } ]

@@ -1,10 +1,10 @@
 package bit.lt.lt.service;
 
-
+import bit.lt.lt.data.Meeting;
 import bit.lt.lt.data.Person;
 import bit.lt.lt.db.PersonDb;
 
-import javax.persistence.criteria.CriteriaBuilder;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -152,5 +152,19 @@ public class PersonService {
             }
         }
         return persons;
+    }
+    public List<Person> deletePerson(Integer personId) throws IOException {
+        List<Person> people = getAllPeople();
+        if (personId == null) {
+            throw new NullPointerException("You must to have id");
+        }
+        for (Person person : people) {
+            if (personId.equals(person.getId())) {
+                people.remove(person);
+                personDb.writeToJsonFilePeople(people);
+                break;
+            }
+        }
+        return people;
     }
 }

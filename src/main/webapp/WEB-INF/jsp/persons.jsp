@@ -2,7 +2,9 @@
 <%@page import="bit.lt.lt.data.Person"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%
+    List<Person> list = (List<Person>) request.getAttribute("persons");
+%>
 <!DOCTYPE html>
 <html>
     <head>

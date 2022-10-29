@@ -1,6 +1,7 @@
 package bit.lt.lt.controllers;
 
 
+import bit.lt.lt.data.Meeting;
 import bit.lt.lt.data.Person;
 import bit.lt.lt.db.MeetingDb;
 import bit.lt.lt.db.PersonDb;
@@ -102,5 +103,16 @@ public class PersonController {
         ModelAndView mav = new ModelAndView("person");
         mav.addObject("person", person);
         return mav;
+    }
+
+    @GetMapping("person/{id}/delete")
+    public String deletePerson(@PathVariable("id") Integer id) throws IOException {
+        meetingService.removeAttendeeFromAllMeetings(id);
+        personService.deletePerson(id);
+//        List<Person> list = personService.getAllPeople();
+//        ModelAndView mav = new ModelAndView("persons");
+//        mav.addObject("persons", list);
+//        return mav;
+        return "redirect:/persons";
     }
 }
